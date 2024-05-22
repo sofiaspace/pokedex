@@ -17,8 +17,6 @@ export interface PokemonProps {
 const PokemonList = () => {
   const { data, loading, error } = useQuery(pokemonsQuery);
 
-  console.log(data);
-
   if (loading) {
     return <div>loading...</div>;
   }
@@ -27,17 +25,19 @@ const PokemonList = () => {
   }
 
   return (
-    <div className="grid grid-cols-5 gap-5 p-20">
-      {data.pokemon_v2_pokemon.map(
-        ({ name, id, pokemon_v2_pokemonsprites }: PokemonProps) => (
-          <PokemonCard
-            id={id}
-            key={id}
-            name={name}
-            pokemon_v2_pokemonsprites={pokemon_v2_pokemonsprites}
-          />
-        )
-      )}
+    <div className="flex w-[100%] p-20">
+      <div className="grid grid-cols-[repeat(auto-fill,11rem)] gap-6 w-[100%] place-content-center">
+        {data.pokemon_v2_pokemon.map(
+          ({ name, id, pokemon_v2_pokemonsprites }: PokemonProps) => (
+            <PokemonCard
+              id={id}
+              key={id}
+              name={name}
+              pokemon_v2_pokemonsprites={pokemon_v2_pokemonsprites}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 };
