@@ -1,6 +1,14 @@
 "use client";
 
-import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache, gql } from "@apollo/client";
+
+const typeDefs = gql`
+  extend type Pokemon {
+    name: String!
+    id: Int!
+    sprites: String!
+  }
+`;
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -8,6 +16,7 @@ const createApolloClient = () => {
       uri: "https://beta.pokeapi.co/graphql/v1beta",
     }),
     cache: new InMemoryCache(),
+    typeDefs,
   });
 };
 

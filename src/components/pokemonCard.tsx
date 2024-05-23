@@ -6,16 +6,26 @@ import { idConverter } from "@/ui/idConverter";
 import info from "../../public/img/info-icon.png";
 import Link from "next/link";
 
-const PokemonCard = ({ name, id, pokemon_v2_pokemonsprites }: PokemonProps) => {
-  const src = `${pokemon_v2_pokemonsprites[0].sprites.front_default}`;
+const PokemonCard = ({
+  name,
+  id,
+  pokemon_v2_pokemonspecy,
+  pokemon_v2_pokemonsprites_aggregate,
+}: PokemonProps) => {
+  const src =
+    pokemon_v2_pokemonsprites_aggregate.nodes[0].sprites.other[
+      "official-artwork"
+    ].front_default;
+  const color = pokemon_v2_pokemonspecy.pokemon_v2_pokemoncolor.name;
 
   return (
-    <div className="border rounded-xl flex flex-col items-center justify-between bg-slate-50 bg-opacity-30 font-robo h-[12rem] relative ">
+    <Link
+      href={`/pokemon/profile/${id}`}
+      className="border rounded-xl flex flex-col items-center justify-between bg-slate-50 bg-opacity-30 font-robo h-[12rem] relative "
+    >
       <div className="w-[100%] flex flex-row justify-between p-2">
         <p className="h-1">{idConverter(id)}</p>
-        <Link href={`/pokemon/profile/${id}`}>
-          <Image src={info} width={20} height={20} alt="Info icon" />
-        </Link>
+        <Image src={info} width={20} height={20} alt="Info icon" />
       </div>
       <div className="h-full absolute z-10 flex">
         {src !== "null" && (
@@ -30,10 +40,32 @@ const PokemonCard = ({ name, id, pokemon_v2_pokemonsprites }: PokemonProps) => {
           />
         )}
       </div>
-      <div className="bg-slate-50 bg-opacity-40 w-[100%] border rounded-xl h-2/6 flex pb-2">
+      <div
+        className={`${
+          color === "red"
+            ? "bg-red-300"
+            : color === "green"
+            ? "bg-green-300"
+            : color === "blue"
+            ? "bg-blue-300"
+            : color === "purple"
+            ? "bg-purple-300"
+            : color === "yellow"
+            ? "bg-yellow-300"
+            : color === "brown"
+            ? "bg-amber-600"
+            : color === "pink"
+            ? "bg-pink-300"
+            : color === "gray"
+            ? "bg-gray-300"
+            : color === "black"
+            ? "bg-zinc-600"
+            : null
+        }  bg-opacity-40 w-[100%] border rounded-xl h-2/6 flex pb-2`}
+      >
         <p className="uppercase self-end w-[100%] text-center">{name}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
