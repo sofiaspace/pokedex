@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import Image from "next/image";
 import { PokemonProps } from "./pokemonList";
 
+import Loading from "./loading";
+
 interface PokemonProfileProps extends PokemonProps {
   pokemonId: string;
 }
@@ -13,7 +15,7 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
   const id = Number(pokemonId) - 1;
 
   if (loading) {
-    return <div>loading...</div>;
+    return <Loading />;
   }
   if (data === undefined || error) {
     return <div>No pokemon data</div>;
@@ -26,7 +28,7 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
     ].front_default;
 
   return (
-    <div className="text-center h-screen flex justify-center items-center">
+    <div className="text-center flex justify-center items-center">
       <div className="bg-slate-50 bg-opacity-30 font-robo border rounded-xl uppercase">
         {pokemon.name}
 

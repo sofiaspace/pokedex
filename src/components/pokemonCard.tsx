@@ -1,17 +1,36 @@
 "use client";
 
 import Image from "next/image";
-import { PokemonProps } from "./pokemonList";
 import { idConverter } from "@/ui/idConverter";
 import info from "../../public/img/info-icon.png";
 import Link from "next/link";
 
+interface PokemonCardProps {
+  id: number;
+  name: string;
+  pokemon_v2_pokemonspecy: {
+    pokemon_v2_pokemoncolor: {
+      name: string;
+    };
+  };
+  pokemon_v2_pokemonsprites_aggregate: {
+    nodes: Array<{
+      sprites: {
+        other: {
+          "official-artwork": {
+            front_default: string;
+          };
+        };
+      };
+    }>;
+  };
+}
 const PokemonCard = ({
-  name,
   id,
+  name,
   pokemon_v2_pokemonspecy,
   pokemon_v2_pokemonsprites_aggregate,
-}: PokemonProps) => {
+}: PokemonCardProps) => {
   const src =
     pokemon_v2_pokemonsprites_aggregate.nodes[0].sprites.other[
       "official-artwork"

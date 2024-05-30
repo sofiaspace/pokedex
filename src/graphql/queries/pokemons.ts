@@ -18,6 +18,13 @@ export const pokemonsQuery = gql`
           sprites
         }
       }
+      pokemon_v2_pokemontypes_aggregate {
+        nodes {
+          pokemon_v2_type {
+            name
+          }
+        }
+      }
     }
   }
 `;
