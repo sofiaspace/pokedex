@@ -5,6 +5,8 @@ export const pokemonsQuery = gql`
     pokemon_v2_pokemon(limit: $limit) {
       id
       name
+      height
+      weight
       pokemon_v2_pokemonsprites {
         sprites
       }
@@ -23,6 +25,16 @@ export const pokemonsQuery = gql`
           pokemon_v2_type {
             name
           }
+        }
+      }
+      pokemon_v2_pokemonabilities {
+        pokemon_v2_ability {
+          name
+        }
+      }
+      pokemon_v2_pokemonmoves {
+        pokemon_v2_move {
+          name
         }
       }
     }

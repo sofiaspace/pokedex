@@ -8,9 +8,8 @@ interface Pokemon {
 
 const PokemonProfilePage = ({ params }: Pokemon) => {
   const { pokemonId } = params;
-  console.log(params);
 
-  return <PokemonProfile pokemonId={pokemonId} />;
+  return <PokemonProfile pokemonId={pokemonId} pokemon_v2_pokemon={[]} />;
 };
 
 export default PokemonProfilePage;

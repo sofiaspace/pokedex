@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 interface InputsProps {
+  pokemonType: string;
+  setPokemonType: Dispatch<SetStateAction<string>>;
+  pokemonNumber: string;
+  setPokemonNumber: Dispatch<SetStateAction<string>>;
   data: {
     pokemon_v2_pokemon: Array<{
       name: string;
@@ -17,10 +21,14 @@ interface InputsProps {
   };
 }
 
-const Inputs = ({ data }: InputsProps) => {
+const Inputs = ({
+  data,
+  pokemonType,
+  setPokemonType,
+  pokemonNumber,
+  setPokemonNumber,
+}: InputsProps) => {
   const [search, setSearch] = useState<string>("");
-  const [numbers, setNumbers] = useState<string>("");
-  const [pokemonType, setPokemonType] = useState<string>("");
 
   const types: string[] = Array.from(
     new Set(
@@ -30,8 +38,9 @@ const Inputs = ({ data }: InputsProps) => {
       )
     )
   );
+  types.push("all types");
 
-  const quantity: string[] = ["1-199", "200-399", "400-599", "600-799"];
+  const quantity: string[] = ["1-10", "1-199", "200-399", "400-599", "600-799"];
 
   return (
     <div className="w-[100%] flex flex-row flex-wrap gap-14 justify-center pb-24 text-center">
@@ -39,8 +48,8 @@ const Inputs = ({ data }: InputsProps) => {
         <label className="text-slate-300">Pokemons:</label>
         <select
           className="border rounded-md"
-          value={numbers}
-          onChange={({ target }) => setNumbers(target.value)}
+          value={pokemonNumber}
+          onChange={({ target }) => setPokemonNumber(target.value)}
         >
           {quantity.map((num) => (
             <option key={num} value={num}>

@@ -1,4 +1,3 @@
-import Inputs from "@/components/inputs/inputs";
 import PokemonList from "@/components/pokemonList";
 
 export default function Home() {
