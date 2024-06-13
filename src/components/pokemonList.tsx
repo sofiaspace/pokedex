@@ -46,17 +46,19 @@ export interface PokemonProps {
         name: string;
       };
     }>;
-    pokemon_v2_pokemonmoves: {
-      pokemon_v2_move: {
+    pokemon_v2_pokemonstats: Array<{
+      pokemon_v2_stat: {
         name: string;
       };
-    };
+      base_stat: number;
+    }>;
   }>;
 }
 
 const PokemonList = () => {
   const [pokemonType, setPokemonType] = useState<string>("all types");
-  const [pokemonNumber, setPokemonNumber] = useState<string>("1-10");
+  const [pokemonNumber, setPokemonNumber] = useState<number>(10);
+  const [search, setSearch] = useState<string>("");
   const { data, loading, error } = useQuery<PokemonProps>(pokemonsQuery, {
     variables: { limit: 10 },
   });
@@ -76,7 +78,17 @@ const PokemonList = () => {
             pokemonType
           )
         );
-  console.log(pokemonNumber);
+
+  const sliceFloor =
+    pokemonNumber === 10
+      ? 0
+      : pokemonNumber === 100
+      ? 0
+      : pokemonNumber === 200
+      ? 100
+      : pokemonNumber === 300
+      ? 200
+      : 0;
 
   return (
     <div className="flex flex-col w-[100%]">
@@ -86,26 +98,31 @@ const PokemonList = () => {
         setPokemonType={setPokemonType}
         pokemonNumber={pokemonNumber}
         setPokemonNumber={setPokemonNumber}
+        search={search}
+        setSearch={setSearch}
       />
       <div className="grid grid-cols-[repeat(auto-fill,11rem)] gap-6 w-[100%] place-content-center">
-        {filteredPokemons.map(
-          ({
-            name,
-            id,
-            pokemon_v2_pokemonspecy,
-            pokemon_v2_pokemonsprites_aggregate,
-          }) => (
-            <PokemonCard
-              key={id}
-              id={id}
-              name={name}
-              pokemon_v2_pokemonspecy={pokemon_v2_pokemonspecy}
-              pokemon_v2_pokemonsprites_aggregate={
-                pokemon_v2_pokemonsprites_aggregate
-              }
-            />
-          )
-        )}
+        {filteredPokemons
+          .slice(sliceFloor, pokemonNumber)
+          .filter((pokemon) => pokemon.name.startsWith(search))
+          .map(
+            ({
+              name,
+              id,
+              pokemon_v2_pokemonspecy,
+              pokemon_v2_pokemonsprites_aggregate,
+            }) => (
+              <PokemonCard
+                key={id}
+                id={id}
+                name={name}
+                pokemon_v2_pokemonspecy={pokemon_v2_pokemonspecy}
+                pokemon_v2_pokemonsprites_aggregate={
+                  pokemon_v2_pokemonsprites_aggregate
+                }
+              />
+            )
+          )}
       </div>
     </div>
   );

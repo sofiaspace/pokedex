@@ -5,8 +5,10 @@ import { Dispatch, SetStateAction, useState } from "react";
 interface InputsProps {
   pokemonType: string;
   setPokemonType: Dispatch<SetStateAction<string>>;
-  pokemonNumber: string;
-  setPokemonNumber: Dispatch<SetStateAction<string>>;
+  pokemonNumber: number;
+  setPokemonNumber: Dispatch<SetStateAction<number>>;
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
   data: {
     pokemon_v2_pokemon: Array<{
       name: string;
@@ -27,9 +29,9 @@ const Inputs = ({
   setPokemonType,
   pokemonNumber,
   setPokemonNumber,
+  search,
+  setSearch,
 }: InputsProps) => {
-  const [search, setSearch] = useState<string>("");
-
   const types: string[] = Array.from(
     new Set(
       data.pokemon_v2_pokemon.map(
@@ -40,8 +42,6 @@ const Inputs = ({
   );
   types.push("all types");
 
-  const quantity: string[] = ["1-10", "1-199", "200-399", "400-599", "600-799"];
-
   return (
     <div className="w-[100%] flex flex-row flex-wrap gap-14 justify-center pb-24 text-center">
       <div className="flex flex-col w-1/6">
@@ -49,13 +49,13 @@ const Inputs = ({
         <select
           className="border rounded-md"
           value={pokemonNumber}
-          onChange={({ target }) => setPokemonNumber(target.value)}
+          onChange={({ target }) => setPokemonNumber(Number(target.value))}
         >
-          {quantity.map((num) => (
-            <option key={num} value={num}>
-              {num}
-            </option>
-          ))}
+          <option value={600}>All Pokémon</option>
+          <option value={10}>1-10 Pokémon</option>
+          <option value={100}>11-100 Pokémon</option>
+          <option value={200}>101-200 Pokémon</option>
+          <option value={300}>201-300 Pokémon</option>
         </select>
       </div>
       <div className="flex flex-col w-1/6">

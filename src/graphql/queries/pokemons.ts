@@ -32,10 +32,17 @@ export const pokemonsQuery = gql`
           name
         }
       }
-      pokemon_v2_pokemonmoves {
-        pokemon_v2_move {
+      pokemon_v2_pokemonstats {
+        pokemon_v2_stat {
           name
         }
+        base_stat
+      }
+    }
+    pokemon_v2_characteristic {
+      pokemon_v2_characteristicdescriptions {
+        description
+        language_id
       }
     }
   }
