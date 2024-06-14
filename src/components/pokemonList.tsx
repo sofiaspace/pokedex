@@ -1,66 +1,19 @@
 "use client";
 
-import { pokemonsQuery } from "@/graphql/queries/pokemons";
-import { useQuery } from "@apollo/client";
-import PokemonCard from "./pokemonCard";
+import { useState } from "react";
 import Loading from "../app/loading";
 import Inputs from "./inputs/inputs";
-import { useState } from "react";
-
-export interface PokemonProps {
-  pokemon_v2_pokemon: Array<{
-    name: string;
-    id: number;
-    height: number;
-    weight: number;
-    pokemon_v2_pokemonsprites?: Array<{
-      sprites: {
-        front_default: string;
-      };
-    }>;
-    pokemon_v2_pokemonspecy: {
-      pokemon_v2_pokemoncolor: {
-        name: string;
-      };
-    };
-    pokemon_v2_pokemonsprites_aggregate: {
-      nodes: Array<{
-        sprites: {
-          other: {
-            "official-artwork": {
-              front_default: string;
-            };
-          };
-        };
-      }>;
-    };
-    pokemon_v2_pokemontypes_aggregate: {
-      nodes: Array<{
-        pokemon_v2_type: {
-          name: string;
-        };
-      }>;
-    };
-    pokemon_v2_pokemonabilities: Array<{
-      pokemon_v2_ability: {
-        name: string;
-      };
-    }>;
-    pokemon_v2_pokemonstats: Array<{
-      pokemon_v2_stat: {
-        name: string;
-      };
-      base_stat: number;
-    }>;
-  }>;
-}
+import PokemonCard from "./pokemonCard";
+import { useQuery } from "@apollo/client";
+import { pokemonsQuery } from "@/graphql/queries/pokemons";
+import { PokemonProps } from "@/graphql/queries/pokemons.types";
 
 const PokemonList = () => {
   const [pokemonType, setPokemonType] = useState<string>("all types");
   const [pokemonNumber, setPokemonNumber] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
   const { data, loading, error } = useQuery<PokemonProps>(pokemonsQuery, {
-    variables: { limit: 10 },
+    variables: { limit: 1000 },
   });
 
   if (loading) {
@@ -74,8 +27,8 @@ const PokemonList = () => {
     pokemonType === "all types"
       ? data.pokemon_v2_pokemon
       : data.pokemon_v2_pokemon.filter((pokemon) =>
-          pokemon.pokemon_v2_pokemontypes_aggregate.nodes[0].pokemon_v2_type.name.includes(
-            pokemonType
+          pokemon.pokemon_v2_pokemontypes_aggregate.nodes.find(
+            ({ pokemon_v2_type }) => pokemon_v2_type.name.includes(pokemonType)
           )
         );
 

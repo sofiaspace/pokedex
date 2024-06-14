@@ -21,7 +21,7 @@ export default function RootLayout({
       className="h-screen bg-cover bg-fixed bg-center bg-[url('../../public/img/background-image.jpg')] overflow-auto"
     >
       <body className="flex-1 flex flex-col justify-center items-center">
-        <header className="pt-24">
+        <header className="pt-16">
           <Link href={"/"} className="items-center pt-20">
             <Image src={logo} alt="Logo" width={200} priority />
           </Link>

@@ -40,7 +40,7 @@ const PokemonCard = ({
   return (
     <Link
       href={`/pokemon/profile/${id}`}
-      className="border rounded-xl flex flex-col items-center justify-between bg-slate-50 bg-opacity-30 font-robo h-[12rem] relative "
+      className="border rounded-xl flex flex-col items-center justify-between bg-slate-50 bg-opacity-30 font-robo h-[12rem] relative hover:bg-opacity-40"
     >
       <div className="w-[100%] flex flex-row justify-between p-2">
         <p className="h-1">{idConverter(id)}</p>

@@ -9,7 +9,13 @@ interface Pokemon {
 const PokemonProfilePage = ({ params }: Pokemon) => {
   const { pokemonId } = params;
 
-  return <PokemonProfile pokemonId={pokemonId} pokemon_v2_pokemon={[]} />;
+  return (
+    <PokemonProfile
+      pokemonId={pokemonId}
+      pokemon_v2_pokemon={[]}
+      pokemon_v2_characteristic={[]}
+    />
+  );
 };
 
 export default PokemonProfilePage;

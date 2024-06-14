@@ -42,7 +42,6 @@ export const pokemonsQuery = gql`
     pokemon_v2_characteristic {
       pokemon_v2_characteristicdescriptions {
         description
-        language_id
       }
     }
   }
