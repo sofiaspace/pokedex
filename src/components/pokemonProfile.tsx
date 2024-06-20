@@ -13,7 +13,7 @@ interface PokemonProfileProps extends PokemonProps {
 
 const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
   const { data, loading, error } = useQuery(pokemonsQuery, {
-    variables: { limit: 100 },
+    variables: { limit: 200 },
   });
   const id = Number(pokemonId) - 1;
   console.log(data);
@@ -93,6 +93,7 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
           </div>
 
           <PokemonStats
+            type={type}
             description={description}
             stats={stats}
             abilities={abilities}

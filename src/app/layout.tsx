@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ApolloWrapper } from "@/apollo/apollo-wrapper";
 import Image from "next/image";
@@ -16,17 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-screen bg-cover bg-fixed bg-center bg-[url('../../public/img/background-image.jpg')] overflow-auto"
-    >
-      <body className="flex-1 flex flex-col justify-center items-center">
-        <header className="pt-16">
-          <Link href={"/"} className="items-center pt-20">
+    <html lang="en" className="">
+      <body className="flex flex-col items-center h-screen bg-cover bg-fixed bg-center bg-[url('../../public/img/background-image.jpg')] overflow-auto">
+        <header className="pt-20">
+          <Link href={"/"}>
             <Image src={logo} alt="Logo" width={200} priority />
           </Link>
         </header>
-        <main className="p-24 flex items-center w-[100%]">
+        <main className="p-20 flex items-center w-[100%]">
           <ApolloWrapper>{children}</ApolloWrapper>
         </main>
       </body>

@@ -47,7 +47,7 @@ const Inputs = ({
       <div className="flex flex-col w-1/6">
         <label className="text-slate-300">Pokemons:</label>
         <select
-          className="border rounded-md"
+          className="border rounded-xl px-2 py-1 hover:cursor-pointer"
           value={pokemonNumber}
           onChange={({ target }) => setPokemonNumber(Number(target.value))}
         >
@@ -61,7 +61,7 @@ const Inputs = ({
       <div className="flex flex-col w-1/6">
         <label className="text-slate-300">Types:</label>
         <select
-          className="border rounded-md"
+          className="border rounded-xl px-2 py-1 hover:cursor-pointer border-transparent"
           value={pokemonType}
           onChange={({ target }) => setPokemonType(target.value)}
         >
@@ -75,7 +75,7 @@ const Inputs = ({
       <div className="flex flex-col w-1/6">
         <label className="text-slate-300">Search:</label>
         <input
-          className="border rounded-md pl-1"
+          className="border rounded-xl px-2 py-1"
           type="text"
           value={search}
           onChange={({ target }) => setSearch(target.value)}

@@ -24,7 +24,7 @@ const TypeIcon = ({ type }: TypeIconProps) => {
     <div className="flex justify-center w-[100%] pt-3">
       {type.length === 1 ? (
         <div
-          className={`flex flex-row gap-2 rounded-3xl ${color} w-4/5 px-2 py-1`}
+          className={`flex flex-row gap-2 items-center justify-evenly ${color} rounded-3xl px-2 py-1`}
         >
           <Image
             src={`/img/${type}_icon.png`}
@@ -39,7 +39,7 @@ const TypeIcon = ({ type }: TypeIconProps) => {
       ) : (
         <div className="flex flex-col gap-1">
           <div
-            className={`flex flex-row gap-2 ${color1} rounded-3xl px-2 py-1`}
+            className={`flex flex-row items-left gap-2  ${color1} rounded-3xl px-2 py-1`}
           >
             <Image
               src={`/img/${type1}_icon.png`}
@@ -52,7 +52,7 @@ const TypeIcon = ({ type }: TypeIconProps) => {
             </p>
           </div>
           <div
-            className={`flex flex-row gap-2 ${color2} rounded-3xl px-2 py-1`}
+            className={`flex flex-row items-left gap-2 ${color2} rounded-3xl px-2 py-1`}
           >
             <Image
               src={`/img/${type2}_icon.png`}
