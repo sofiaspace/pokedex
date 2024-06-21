@@ -1,5 +1,7 @@
 "use client";
 
+import { BackgroundColor, TextColor } from "@/ui/statsColor";
+
 interface PokemonStatsProps {
   type: string | string[];
   stats: Array<{
@@ -27,19 +29,26 @@ const PokemonStats = ({
 
   console.log(type);
 
+  const text = TextColor[type[0]];
+  const background = BackgroundColor[type[0]];
+
   return (
-    <div className="flex flex-col text-left flex-1 ">
-      <p className="font-bold text-yellow-300">Description</p>
-      <p className="pb-2 text-sm">{description}</p>
-      <p className="font-bold text-yellow-300">Abilities</p>
+    <div className="flex flex-col text-left flex-1">
+      {description && (
+        <>
+          <p className={`font-medium ${text}`}>Description</p>
+          <p className="pb-2 text-sm">{description}</p>
+        </>
+      )}
+      <p className={`font-medium ${text}`}>Abilities</p>
       <div className="flex flex-row gap-2 pb-2">
         <p className="first-letter:capitalize text-sm">
-          {firstAbility} and {secondAbility}
+          {firstAbility} {secondAbility && <>and {secondAbility}</>}
         </p>
       </div>
 
-      <p className="font-bold text-yellow-300">Stats</p>
-      <ul className="">
+      <p className={`font-medium ${text}`}>Stats</p>
+      <ul>
         {stats.map((stat) => {
           const percentageStats = (stat.base_stat * 100) / 200 + "%";
           return (
@@ -51,8 +60,8 @@ const PokemonStats = ({
               <div className="rounded-sm bg-slate-50 h-1 w-[100%]">
                 <div
                   style={{ width: percentageStats }}
-                  className="bg-yellow-300 
-                 h-1 rounded-sm"
+                  className={`${background} 
+                 h-1 rounded-sm`}
                 ></div>
               </div>
             </li>

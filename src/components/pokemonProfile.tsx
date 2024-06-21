@@ -6,6 +6,7 @@ import PokemonStats from "./pokemonStats";
 import { pokemonsQuery } from "@/graphql/queries/pokemons";
 import { PokemonProps } from "@/graphql/queries/pokemons.types";
 import TypeIcon from "./typeIcon";
+import { typeColor } from "@/ui/typeColor";
 
 interface PokemonProfileProps extends PokemonProps {
   pokemonId: string;
@@ -16,7 +17,7 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
     variables: { limit: 200 },
   });
   const id = Number(pokemonId) - 1;
-  console.log(data);
+
   if (loading) {
     return <Loading />;
   }
@@ -38,37 +39,19 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
       ({ pokemon_v2_type }: any) => pokemon_v2_type.name
     );
 
-  const color = pokemon.pokemon_v2_pokemonspecy.pokemon_v2_pokemoncolor.name;
   const height = pokemon.height + " " + "cm";
   const weight = pokemon.weight + " " + "kg";
 
   const stats = pokemon.pokemon_v2_pokemonstats;
   const abilities = pokemon.pokemon_v2_pokemonabilities;
+  const color = typeColor[type[0]];
+
+  console.log(data, color);
 
   return (
     <div className="w-[100%] text-center flex justify-center items-center text-slate-200">
       <div
-        className={`${
-          color === "red"
-            ? "bg-red-300"
-            : color === "green"
-            ? "bg-green-300"
-            : color === "blue"
-            ? "bg-blue-300"
-            : color === "purple"
-            ? "bg-purple-300"
-            : color === "yellow"
-            ? "bg-yellow-300"
-            : color === "brown"
-            ? "bg-amber-600"
-            : color === "pink"
-            ? "bg-pink-300"
-            : color === "gray"
-            ? "bg-gray-300"
-            : color === "black"
-            ? "bg-zinc-600"
-            : null
-        }  bg-opacity-30 font-robo border rounded-xl flex flex-col p-4 w-2/5`}
+        className={`${color} bg-opacity-30 border rounded-xl flex flex-col p-4 w-2/5`}
       >
         <p className="uppercase pb-4 text-xl">{pokemon.name}</p>
         <div className="flex flex-row gap-6 pl-3">

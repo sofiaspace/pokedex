@@ -10,11 +10,6 @@ export interface PokemonProps {
         front_default: string;
       };
     }>;
-    pokemon_v2_pokemonspecy: {
-      pokemon_v2_pokemoncolor: {
-        name: string;
-      };
-    };
     pokemon_v2_pokemonsprites_aggregate: {
       nodes: Array<{
         sprites: {

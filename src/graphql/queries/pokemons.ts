@@ -10,11 +10,6 @@ export const pokemonsQuery = gql`
       pokemon_v2_pokemonsprites {
         sprites
       }
-      pokemon_v2_pokemonspecy {
-        pokemon_v2_pokemoncolor {
-          name
-        }
-      }
       pokemon_v2_pokemonsprites_aggregate {
         nodes {
           sprites

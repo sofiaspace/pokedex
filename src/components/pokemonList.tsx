@@ -62,16 +62,18 @@ const PokemonList = () => {
             ({
               name,
               id,
-              pokemon_v2_pokemonspecy,
               pokemon_v2_pokemonsprites_aggregate,
+              pokemon_v2_pokemontypes_aggregate,
             }) => (
               <PokemonCard
                 key={id}
                 id={id}
                 name={name}
-                pokemon_v2_pokemonspecy={pokemon_v2_pokemonspecy}
                 pokemon_v2_pokemonsprites_aggregate={
                   pokemon_v2_pokemonsprites_aggregate
+                }
+                pokemon_v2_pokemontypes_aggregate={
+                  pokemon_v2_pokemontypes_aggregate
                 }
               />
             )

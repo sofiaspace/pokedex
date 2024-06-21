@@ -20,7 +20,7 @@ export type PokemonType =
 
 export const typeColor: Record<string, string> = {
   fire: "bg-red-300",
-  ice: "bg-red-300",
+  ice: "bg-sky-300",
   fighting: "bg-red-300",
   bug: "bg-yellow-300",
   grass: "bg-green-300",

@@ -4,10 +4,18 @@ import { ApolloWrapper } from "@/apollo/apollo-wrapper";
 import Image from "next/image";
 import logo from "../../public/img/logo.svg";
 import Link from "next/link";
+import { Montserrat } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Pokedex",
 };
+
+const montserrat = Montserrat({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["Arial", "sans-serif"],
+});
 
 export default function RootLayout({
   children,
@@ -15,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
+    <html lang="en" className={montserrat.className}>
       <body className="flex flex-col items-center h-screen bg-cover bg-fixed bg-center bg-[url('../../public/img/background-image.jpg')] overflow-auto">
         <header className="pt-20">
           <Link href={"/"}>

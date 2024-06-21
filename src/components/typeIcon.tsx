@@ -32,14 +32,14 @@ const TypeIcon = ({ type }: TypeIconProps) => {
             width={30}
             height={30}
           />
-          <p className="first-letter:uppercase self-center text-black">
+          <p className="first-letter:uppercase self-center text-black font-medium">
             {type}
           </p>
         </div>
       ) : (
         <div className="flex flex-col gap-1">
           <div
-            className={`flex flex-row items-left gap-2  ${color1} rounded-3xl px-2 py-1`}
+            className={`flex flex-row items-left gap-2 ${color1} rounded-3xl px-2 py-1`}
           >
             <Image
               src={`/img/${type1}_icon.png`}
@@ -47,7 +47,7 @@ const TypeIcon = ({ type }: TypeIconProps) => {
               width={30}
               height={30}
             />
-            <p className="first-letter:uppercase self-center text-black">
+            <p className="first-letter:uppercase self-center text-black font-medium">
               {type1}
             </p>
           </div>
@@ -60,7 +60,7 @@ const TypeIcon = ({ type }: TypeIconProps) => {
               width={30}
               height={30}
             />
-            <p className="first-letter:uppercase self-center text-black">
+            <p className="first-letter:uppercase self-center text-black font-medium">
               {type2}
             </p>
           </div>
