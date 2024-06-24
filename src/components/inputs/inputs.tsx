@@ -1,10 +1,9 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useRouter } from "next/navigation";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface InputsProps {
-  pokemonType: string;
-  setPokemonType: Dispatch<SetStateAction<string>>;
   pokemonNumber: number;
   setPokemonNumber: Dispatch<SetStateAction<number>>;
   search: string;
@@ -25,8 +24,6 @@ interface InputsProps {
 
 const Inputs = ({
   data,
-  pokemonType,
-  setPokemonType,
   pokemonNumber,
   setPokemonNumber,
   search,
@@ -40,7 +37,11 @@ const Inputs = ({
       )
     )
   );
-  types.push("all types");
+  types.unshift("all types");
+  const router = useRouter();
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    router.push(`/type?type=${e.target.value}`);
+  };
 
   return (
     <div className="w-[100%] flex flex-row flex-wrap gap-14 justify-center pb-24 text-center">
@@ -61,9 +62,8 @@ const Inputs = ({
       <div className="flex flex-col w-1/6">
         <label className="text-slate-300">Types:</label>
         <select
-          className="border rounded-xl px-2 py-1 hover:cursor-pointer border-transparent"
-          value={pokemonType}
-          onChange={({ target }) => setPokemonType(target.value)}
+          className="border rounded-xl px-2 py-1 hover:cursor-pointer border-transparent "
+          onChange={(e) => handleChange(e)}
         >
           {types.map((type) => (
             <option key={type} value={type}>
