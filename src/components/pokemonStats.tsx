@@ -16,6 +16,7 @@ interface PokemonStatsProps {
     };
   }>;
   description: string;
+  generation: string;
 }
 
 const PokemonStats = ({
@@ -23,17 +24,18 @@ const PokemonStats = ({
   abilities,
   description,
   type,
+  generation,
 }: PokemonStatsProps) => {
-  const firstAbility = abilities[0].pokemon_v2_ability.name;
-  const secondAbility = abilities[1]?.pokemon_v2_ability.name;
-
-  console.log(type);
+  const firstAbility: string = abilities[0].pokemon_v2_ability.name;
+  const secondAbility: string = abilities[1]?.pokemon_v2_ability.name;
 
   const text = TextColor[type[0]];
   const background = BackgroundColor[type[0]];
 
   return (
     <div className="flex flex-col text-left flex-1">
+      <p className={`font-medium ${text}`}>Generation</p>
+      <p className="pb-2 text-sm first-letter:uppercase">{generation}</p>
       {description && (
         <>
           <p className={`font-medium ${text}`}>Description</p>

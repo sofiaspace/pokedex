@@ -1,5 +1,4 @@
 import PokemonTypes from "@/components/pokemonTypes";
-import { PokemonProps } from "@/graphql/queries/pokemons.types";
 
 interface PokemonTypePageProps {
   searchParams: {
@@ -11,7 +10,7 @@ const PokemonTypePage = ({ searchParams }: PokemonTypePageProps) => {
   const pokemonType = searchParams.type;
 
   return (
-    <div className="w-[100%]">
+    <div className="w-[100%] h-full">
       <PokemonTypes pokemonType={pokemonType} />
     </div>
   );

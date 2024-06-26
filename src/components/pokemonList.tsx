@@ -6,9 +6,9 @@ import Inputs from "./inputs/inputs";
 import { useQuery } from "@apollo/client";
 import { pokemonsQuery } from "@/graphql/queries/pokemons";
 import { PokemonProps } from "@/graphql/queries/pokemons.types";
+import PokemonCard from "./pokemonCard";
 
 const PokemonList = () => {
-  const [pokemonNumber, setPokemonNumber] = useState<number>(10);
   const [search, setSearch] = useState<string>("");
   const { data, loading, error } = useQuery<PokemonProps>(pokemonsQuery, {
     variables: { limit: 1000 },
@@ -18,32 +18,16 @@ const PokemonList = () => {
     return <Loading />;
   }
   if (data === undefined || error || null) {
-    return <div>No pokemon data</div>;
+    return <div className="w-[100%]">No pokemon data</div>;
   }
 
-  const sliceFloor =
-    pokemonNumber === 10
-      ? 0
-      : pokemonNumber === 100
-      ? 0
-      : pokemonNumber === 200
-      ? 100
-      : pokemonNumber === 300
-      ? 200
-      : 0;
+  const allPokemons = data.pokemon_v2_pokemon;
 
   return (
-    <div className="flex flex-col w-[100%]">
-      <Inputs
-        data={data}
-        pokemonNumber={pokemonNumber}
-        setPokemonNumber={setPokemonNumber}
-        search={search}
-        setSearch={setSearch}
-      />
+    <div className="flex flex-col w-[100%] h-full">
+      <Inputs data={data} search={search} setSearch={setSearch} />
       <div className="grid grid-cols-[repeat(auto-fill,11rem)] gap-6 w-[100%] place-content-center">
-        {/* {filteredPokemons
-          .slice(sliceFloor, pokemonNumber)
+        {allPokemons
           .filter((pokemon) => pokemon.name.startsWith(search))
           .map(
             ({
@@ -64,7 +48,7 @@ const PokemonList = () => {
                 }
               />
             )
-          )} */}
+          )}
       </div>
     </div>
   );

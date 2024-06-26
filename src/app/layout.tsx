@@ -24,13 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={montserrat.className}>
-      <body className="flex flex-col items-center h-screen bg-cover bg-fixed bg-center bg-[url('../../public/img/background-image.jpg')] overflow-auto">
+      <body className="flex flex-col items-center bg-cover h-dvh bg-fixed bg-center bg-[url('../../public/img/background-image.jpg')] overflow-auto">
         <header className="pt-20">
           <Link href={"/"}>
             <Image src={logo} alt="Logo" width={200} priority />
           </Link>
         </header>
-        <main className="p-20 flex items-center w-[100%]">
+        <main className="p-20 flex items-center w-[100%] h-[100%]">
           <ApolloWrapper>{children}</ApolloWrapper>
         </main>
       </body>

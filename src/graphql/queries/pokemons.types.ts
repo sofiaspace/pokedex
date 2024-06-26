@@ -1,15 +1,9 @@
 export interface PokemonProps {
   pokemon_v2_pokemon: Array<{
-    pokemon_v2_type: any;
     name: string;
     id: number;
     height: number;
     weight: number;
-    pokemon_v2_pokemonsprites?: Array<{
-      sprites: {
-        front_default: string;
-      };
-    }>;
     pokemon_v2_pokemonsprites_aggregate: {
       nodes: Array<{
         sprites: {
@@ -24,6 +18,9 @@ export interface PokemonProps {
     pokemon_v2_pokemontypes_aggregate: {
       nodes: Array<{
         pokemon_v2_type: {
+          pokemon_v2_generation: {
+            name: string;
+          };
           name: string;
         };
       }>;

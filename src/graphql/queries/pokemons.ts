@@ -7,9 +7,6 @@ export const pokemonsQuery = gql`
       name
       height
       weight
-      pokemon_v2_pokemonsprites {
-        sprites
-      }
       pokemon_v2_pokemonsprites_aggregate {
         nodes {
           sprites
@@ -19,6 +16,9 @@ export const pokemonsQuery = gql`
         nodes {
           pokemon_v2_type {
             name
+            pokemon_v2_generation {
+              name
+            }
           }
         }
       }

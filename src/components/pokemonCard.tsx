@@ -34,16 +34,16 @@ const PokemonCard = ({
   pokemon_v2_pokemontypes_aggregate,
   pokemon_v2_pokemonsprites_aggregate,
 }: PokemonCardProps) => {
-  const src =
+  const src: string =
     pokemon_v2_pokemonsprites_aggregate.nodes[0].sprites.other[
       "official-artwork"
     ].front_default;
 
   const type: string | string[] = pokemon_v2_pokemontypes_aggregate.nodes.map(
-    ({ pokemon_v2_type }: any) => pokemon_v2_type.name
+    ({ pokemon_v2_type }) => pokemon_v2_type.name
   );
 
-  const color = typeColor[type[0]];
+  const color: string = typeColor[type[0]];
 
   return (
     <Link
