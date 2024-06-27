@@ -50,13 +50,13 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
       .pokemon_v2_generation.name;
 
   return (
-    <div className="w-[100%] text-center flex justify-center items-center text-slate-200 pb-28">
+    <div className="w-[100%] h-full text-center flex justify-center items-center text-slate-200 ">
       <div
-        className={`${color} bg-opacity-30 border rounded-xl flex flex-col p-4 w-2/6`}
+        className={`${color} bg-opacity-30 border rounded-xl flex flex-col pl-0 p-3 md:p-4 md:pl-1 lg:p-6 lg:pl-4 2xl:p-8 w-[90%] md:w-[70%] lg:w-3/5 xl:w-2/4 2xl:w-2/6`}
       >
-        <p className="uppercase pb-4 text-2xl">{pokemon.name}</p>
-        <div className="flex flex-row gap-6 pl-3">
-          <div>
+        <p className="uppercase pb-2 2xl:pb-6 text-xl">{pokemon.name}</p>
+        <div className="flex flex-row gap-1 lg:gap-3 2xl:gap-7">
+          <div className="flex flex-col justify-evenly">
             <Image
               loader={() => src}
               src={src}
@@ -66,14 +66,16 @@ const PokemonProfile = ({ pokemonId }: PokemonProfileProps) => {
               className="self-center"
               unoptimized
             />
-            <div className="flex flex-row justify-center gap-2 pt-6 text-sm">
-              <p>Weight</p> <p>{weight}</p>
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex flex-row justify-center gap-2 text-sm">
+                <p>Weight</p> <p>{weight}</p>
+              </div>
+              <div className="flex flex-row justify-center gap-3 text-sm">
+                <p>Height</p>
+                <p>{height}</p>
+              </div>
+              <TypeIcon type={type} />
             </div>
-            <div className="flex flex-row justify-center gap-3 text-sm">
-              <p>Height</p>
-              <p>{height}</p>
-            </div>
-            <TypeIcon type={type} />
           </div>
 
           <PokemonStats

@@ -26,7 +26,7 @@ const PokemonList = () => {
   return (
     <div className="flex flex-col w-[100%] h-full">
       <Inputs data={data} search={search} setSearch={setSearch} />
-      <div className="grid grid-cols-[repeat(auto-fill,11rem)] gap-6 w-[100%] place-content-center">
+      <div className="grid grid-cols-[repeat(auto-fill,10rem)] lg:grid-cols-[repeat(auto-fill,11rem)] gap-2 md:gap-3 lg:gap-3 w-[100%] place-content-center">
         {allPokemons
           .filter((pokemon) => pokemon.name.startsWith(search))
           .map(

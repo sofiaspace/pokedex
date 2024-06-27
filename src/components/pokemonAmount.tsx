@@ -35,17 +35,18 @@ const PokemonAmount = ({ pokemonAmount }: PokemonAmountProps) => {
       : 0;
 
   const sliceMax =
-    pokemonAmount === "1000"
+    pokemonAmount === "1000" || pokemonAmount === "701-1000"
       ? 1000
-      : pokemonAmount === "1-100" || pokemonAmount === "701-1000"
+      : pokemonAmount === "1-100"
       ? 100
       : pokemonAmount === "101-400"
       ? 400
       : pokemonAmount === "401-700"
       ? 700
       : 1000;
+
   return (
-    <div className="w-[100%] justify-center grid grid-cols-[repeat(auto-fill,11rem)] gap-6 place-content-center">
+    <div className="w-[100%] grid grid-cols-[repeat(auto-fill,10rem)] lg:grid-cols-[repeat(auto-fill,11rem)] gap-2 md:gap-3 lg:gap-3 place-content-center">
       {pokemons
         .slice(sliceFloor, sliceMax)
         .map(

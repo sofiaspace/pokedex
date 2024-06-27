@@ -55,9 +55,9 @@ const PokemonStats = ({
           const percentageStats = (stat.base_stat * 100) / 200 + "%";
           return (
             <li key={stat.pokemon_v2_stat.name}>
-              <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-row gap-2 items-center text-sm">
                 <p>{stat.pokemon_v2_stat.name}</p>
-                <p className="text-sm">{stat.base_stat}</p>
+                <p className="">{stat.base_stat}</p>
               </div>
               <div className="rounded-sm bg-slate-50 h-1 w-[100%]">
                 <div

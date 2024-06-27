@@ -42,8 +42,8 @@ const Inputs = ({ data, search, setSearch }: InputsProps) => {
   };
 
   return (
-    <div className="w-[100%] flex flex-row flex-wrap gap-14 justify-center pb-24 text-center">
-      <div className="flex flex-col w-1/6 ">
+    <div className="w-[100%] flex flex-row flex-wrap gap-2 lg:gap-4 justify-center pb-16 text-center">
+      <div className="flex flex-col w-3/5 md:w-2/4 lg:w-1/4 xl:w-1/5 2xl:w-1/6">
         <label className="text-slate-300">Pokemons:</label>
         <select
           className="border rounded-xl px-2 py-1 flex-1"
@@ -56,7 +56,7 @@ const Inputs = ({ data, search, setSearch }: InputsProps) => {
           <option value={"701-1000"}>701-1000 Pokémon</option>
         </select>
       </div>
-      <div className="flex flex-col w-1/6">
+      <div className="flex flex-col w-3/5 md:w-2/4 lg:w-1/4 xl:w-1/5 2xl:w-1/6">
         <label className="text-slate-300">Search:</label>
         <input
           className="border rounded-xl px-2 py-1"
@@ -65,7 +65,7 @@ const Inputs = ({ data, search, setSearch }: InputsProps) => {
           onChange={({ target }) => setSearch(target.value)}
         />
       </div>
-      <div className="flex flex-col w-1/6">
+      <div className="flex flex-col w-3/5 md:w-2/4 lg:w-1/4 xl:w-1/5 2xl:w-1/6">
         <label className="text-slate-300">Types:</label>
         <select
           className="border rounded-xl px-2 py-1 flex-1"

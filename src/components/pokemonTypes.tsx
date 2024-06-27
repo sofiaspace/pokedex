@@ -33,7 +33,10 @@ const PokemonTypes = ({ pokemonType }: PokemonTypesProps) => {
 
   return (
     <div className="flex flex-col w-[100%]">
-      <div className="grid grid-cols-[repeat(auto-fill,11rem)] gap-6 w-[100%] place-content-center">
+      <p className="self-center uppercase bg-gradient-to-r from-yellow-300 via-blue-400 to-red-600 text-transparent bg-clip-text inline-block font-bold text-lg pb-6">
+        {pokemonType} type
+      </p>
+      <div className="w-[100%] grid grid-cols-[repeat(auto-fill,10rem)] lg:grid-cols-[repeat(auto-fill,11rem)] gap-2 md:gap-3 lg:gap-3 place-content-center">
         {filteredPokemons.map(
           ({
             name,
