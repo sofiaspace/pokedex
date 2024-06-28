@@ -62,6 +62,7 @@ const Inputs = ({ data, search, setSearch }: InputsProps) => {
           className="border rounded-xl px-2 py-1"
           type="text"
           value={search}
+          spellCheck={false}
           onChange={({ target }) => setSearch(target.value)}
         />
       </div>
